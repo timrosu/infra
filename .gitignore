@@ -1,0 +1,12 @@
+# log files
+*.log
+
+# Environment and reports
+.env
+
+# direnv
+.direnv
+.envrc.local
+
+# pre-commit
+.pre-commit-config.yaml
