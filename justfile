@@ -10,9 +10,14 @@ alias f := format
 alias c := check
 alias u := update
 alias cl := check-log
+alias wf := write-flake
+
 alias dh := disable-hooks
 alias eh := enable-hooks
 
+
+write-flake: && check-nix
+	nix run ".#write-flake"
 
 ### format ###
 
