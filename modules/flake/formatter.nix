@@ -71,11 +71,13 @@
           "test/*"
           "*.svg"
           "*.tape"
-          "*.lock"
           "*.env"
           "*.envrc*"
           "*.gitignore"
+          # generated files
+          "*.lock"
           ".pre-commit-config.yaml"
+          "flake.nix"
         ];
       };
     };
