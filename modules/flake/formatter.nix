@@ -38,6 +38,10 @@
           priority = 1;
         };
 
+        just = {
+          indentation = "  ";
+        };
+
         # yaml
         yamlfmt = {
           enable = true;

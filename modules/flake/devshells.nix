@@ -13,6 +13,7 @@ _: {
         packages = with pkgs; [
           config.treefmt.build.wrapper
           pkgs.just
+          pkgs.flake-edit
         ];
       };
 
