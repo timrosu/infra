@@ -2,7 +2,8 @@
   inputs,
   self,
   ...
-}: {
+}:
+{
   imports = [
     inputs.treefmt-nix.flakeModule
   ];
@@ -14,19 +15,9 @@
       # the nix way
       programs = {
         # nix
-        deadnix = {
-          enable = true;
-          priority = 1;
-        };
-        statix = {
-          enable = true;
-          priority = 2;
-        };
-        alejandra = {
-          enable = true;
-          settings.indentation = "TwoSpaces";
-          priority = 3;
-        };
+        deadnix.enable = true;
+        statix.enable = true;
+        nixfmt.enable = true;
 
         # dockerfile
         dockerfmt = {
@@ -39,6 +30,7 @@
         };
 
         just = {
+          enable = true;
           indentation = "  ";
         };
 
@@ -63,7 +55,10 @@
           enable = true;
           settings.tabWidth = 2;
           settings.embeddedLanguageFormatting = "auto";
-          excludes = ["*.yaml" "*.yml"];
+          excludes = [
+            "*.yaml"
+            "*.yml"
+          ];
           priority = 1;
         };
       };

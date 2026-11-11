@@ -3,7 +3,7 @@ set quiet
 set lazy
 
 # commands
-last-treefmt-log:= `find /nix/store -name '*-treefmt-check.drv' -printf '%T@ %p\n' | sort -n | tail -1 | cut -d' ' -f2-`
+last-treefmt-log := `find /nix/store -name '*-treefmt-check.drv' -printf '%T@ %p\n' | sort -n | tail -1 | cut -d' ' -f2-`
 
 # aliases
 alias f := format
@@ -15,15 +15,14 @@ alias wf := write-flake
 alias dh := disable-hooks
 alias eh := enable-hooks
 
-
 write-flake: && check-nix
-	nix run ".#write-flake"
+  nix run ".#write-flake"
 
 ### format ###
 
 [group('nix')]
 format:
-	nix fmt 
+  nix fmt 
 
 ### check ###
 
@@ -33,37 +32,36 @@ check: check-nix
 [group('check')]
 [group('nix')]
 check-nix:
-	nix flake check -v
+  nix flake check -v
 
 [group('check')]
 check-log:
-	nix log {{last-treefmt-log}}
+  nix log {{ last-treefmt-log }}
 
 ### update ###
 
 [group('update')]
 update: update-nix check
 
-[group('update')]
 [group('nix')]
+[group('update')]
 update-nix:
-	nix flake update
+  nix flake update
 
 ### git ###
 
 [group('git')]
 disable-hooks:
-	git config core.hooksPath /dev/null
+  git config core.hooksPath /dev/null
 
 [group('git')]
 enable-hooks:
-	git config --unset core.hooksPath
+  git config --unset core.hooksPath
 
-
-[no-quiet]
 [group('git')]
+[no-quiet]
 diff arg *file:
-	-git diff {{arg}} {{file}}
+  -git diff {{ arg }} {{ file }}
 
 [group('git')]
 diffq *file: (diff '--quiet' file)

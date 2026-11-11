@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./devshells.nix
     ./formatter.nix
